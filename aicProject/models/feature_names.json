@@ -1,0 +1,12 @@
+[
+  "cf_score",
+  "log_item_pop",
+  "inv_item_recency",
+  "grp_pop",
+  "same_author_hist",
+  "same_publisher_hist",
+  "same_cat1_hist",
+  "same_cat2_hist",
+  "user_hist_count",
+  "user_days_since_last"
+]
