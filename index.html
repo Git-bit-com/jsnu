@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SplitGuard 科研数据集防泄漏划分与自动验证 Agent 参赛演示。硕博组 G040，山豆几倒拔黑客松，张凯。">
+  <meta name="color-scheme" content="light">
+  <title>SplitGuard 演示｜硕博组 G040</title>
+  <style>
+    :root { color-scheme: light; --ink:#18334d; --blue:#174f86; --paper:#f3f6fa; --line:#d6e0ea; --muted:#52667b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:"Microsoft YaHei UI","PingFang SC","Noto Sans CJK SC",sans-serif; line-height:1.7; }
+    header { background:var(--ink); color:white; padding:28px max(20px,calc((100% - 1120px)/2)); }
+    header h1 { margin:0; font-size:clamp(27px,4vw,38px); line-height:1.25; font-weight:700; }
+    header p { margin:9px 0 0; color:#dce8f4; font-size:16px; }
+    main { max-width:1160px; padding:26px 20px 40px; margin:auto; }
+    .team { margin:0 0 18px; color:var(--muted); font-size:15px; }
+    .screen { background:#000; border-radius:8px; overflow:hidden; }
+    video { display:block; width:100%; aspect-ratio:16/9; background:#000; }
+    .play-help { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px; padding:14px 0 18px; border-bottom:1px solid var(--line); }
+    .play-help p { margin:0; }
+    a { color:var(--blue); text-underline-offset:4px; }
+    a:focus-visible, video:focus-visible { outline:3px solid #b55916; outline-offset:4px; }
+    #load-error { border-left:4px solid #b55916; padding:10px 15px; margin:16px 0; background:#fff4e9; }
+    .explanation { max-width:850px; }
+    .explanation h2 { margin:25px 0 8px; font-size:19px; }
+    .explanation p { margin:8px 0; font-size:15px; }
+    footer { color:var(--muted); font-size:13px; padding-top:18px; }
+    @media (max-width:600px) { header { padding:23px 16px; } main { padding:20px 12px 30px; } header p { font-size:14px; } .team { font-size:13px; } .play-help { font-size:14px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SplitGuard 演示</h1>
+    <p>科研数据集防泄漏划分与自动验证 Agent</p>
+  </header>
+  <main>
+    <p class="team">2026 年江苏省 AI+科学与工程创新实践黑客松　｜　硕博组 G040　｜　山豆几倒拔黑客松　｜　张凯</p>
+    <div class="screen">
+      <video id="demo" controls playsinline preload="metadata" aria-label="SplitGuard 完整演示视频，含中文字幕和中文旁白">
+        <source src="./硕博组-G040-山豆几倒拔黑客松-张凯.mp4" type="video/mp4">
+        当前浏览器不支持视频播放，请使用下方链接下载原视频。
+      </video>
+    </div>
+    <div class="play-help">
+      <p>完整演示约 3 分 41 秒。点击播放，可使用播放器右下角的全屏按钮。</p>
+      <a href="./硕博组-G040-山豆几倒拔黑客松-张凯.mp4" download="硕博组-G040-山豆几倒拔黑客松-张凯.mp4">下载原视频（约 15 MB）</a>
+    </div>
+    <p id="load-error" role="alert" hidden>视频暂时加载失败。请稍后刷新，或点击“下载原视频”后在本地播放。</p>
+    <section class="explanation" aria-labelledby="about-title">
+      <h2 id="about-title">演示内容</h2>
+      <p>以同一原始视频切出的多个片段为例，使用明确的来源组编号检查已有划分，生成训练、验证和测试清单，再独立验证。录像展示真实 Agnes Harness 与 Agnes 调用，以及正常划分和重复样本编号的输入阻断。</p>
+      <p>演示数据为合成数据。“防泄漏”仅指显式来源组跨集合重叠和重复样本编号问题，不包含隐藏关联、语义重复或特征泄漏检测。</p>
+      <p>画面为真实录屏；等待段的加速与关键帧留停已在视频中标注。中文旁白由本地 MeloTTS 合成。Agent 运行使用 Agnes Harness 与 agnes-3.0-flash。</p>
+    </section>
+    <footer>本页提供演示视频；科研 Agent 在本地环境运行。</footer>
+  </main>
+  <script>
+    const video = document.getElementById('demo');
+    const error = document.getElementById('load-error');
+    video.addEventListener('error', () => { error.hidden = false; });
+    video.querySelector('source').addEventListener('error', () => { error.hidden = false; });
+    video.addEventListener('loadedmetadata', () => { error.hidden = true; });
+  </script>
+</body>
+</html>
